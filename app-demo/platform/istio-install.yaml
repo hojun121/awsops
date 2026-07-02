@@ -1,8 +1,6 @@
 # Istio 설치 설정 (istioctl install -f istio-install.yaml)
 # - demo 프로파일 (istiod + ingress/egress gateway)
 # - 액세스 로그: 모든 사이드카 stdout (Alloy가 수집 -> Loki)
-# - 트레이싱: OTLP provider "otel" 를 Alloy 로 전송 (Alloy -> Tempo)
-#   실제 샘플링 비율은 Telemetry API(app-demo/istio/telemetry.yaml)에서 100%로 지정
 apiVersion: install.istio.io/v1alpha1
 kind: IstioOperator
 metadata:
@@ -11,9 +9,3 @@ spec:
   profile: demo
   meshConfig:
     accessLogFile: /dev/stdout
-    enableTracing: true
-    extensionProviders:
-      - name: otel
-        opentelemetry:
-          service: alloy.observability.svc.cluster.local
-          port: 4317

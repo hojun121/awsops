@@ -1,7 +1,6 @@
-# Grafana Alloy: 단일 Deployment로 3종 수집
+# Grafana Alloy: 단일 Deployment로 2종 수집
 #  - 메트릭: Istio Envoy 사이드카(:15020/stats/prometheus) scrape -> Mimir remote_write
 #  - 로그:  bookinfo/istio-system 파드 로그 -> Loki
-#  - 트레이스: OTLP 수신(4317/4318) -> Tempo  (Istio가 alloy:4317로 전송)
 controller:
   type: deployment
   replicas: 1
@@ -10,15 +9,6 @@ rbac:
 service:
   enabled: true
 alloy:
-  extraPorts:
-    - name: otlp-grpc
-      port: 4317
-      targetPort: 4317
-      protocol: TCP
-    - name: otlp-http
-      port: 4318
-      targetPort: 4318
-      protocol: TCP
   configMap:
     content: |
       logging {
@@ -96,27 +86,5 @@ alloy:
       loki.write "loki" {
         endpoint {
           url = "http://loki.observability.svc.cluster.local:3100/loki/api/v1/push"
-        }
-      }
-
-      // ---- Traces: OTLP receiver -> Tempo ----
-      otelcol.receiver.otlp "in" {
-        grpc {
-          endpoint = "0.0.0.0:4317"
-        }
-        http {
-          endpoint = "0.0.0.0:4318"
-        }
-        output {
-          traces = [otelcol.exporter.otlp.tempo.input]
-        }
-      }
-
-      otelcol.exporter.otlp "tempo" {
-        client {
-          endpoint = "tempo.observability.svc.cluster.local:4317"
-          tls {
-            insecure = true
-          }
         }
       }
