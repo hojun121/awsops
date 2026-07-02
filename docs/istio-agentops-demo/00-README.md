@@ -14,6 +14,7 @@
 | 03 | [수동 진단 방법](03-manual-diagnosis.md) | Kiali, Grafana(Metric/Log), kubectl로 진단 |
 | 04 | [AgentOps 진단 방법](04-agentops-diagnosis.md) | awsops 대시보드로 통합 진단 |
 | 05 | [배포 계획](05-deployment-plan.md) | 배포 순서와 명령 |
+| 06 | [데모 실행 대본](06-demo-runbook.md) | 발표자가 따라 읽는 실전 진행 대본 (URL·명령·질문·체크리스트) |
 
 ## 아키텍처 개요
 
