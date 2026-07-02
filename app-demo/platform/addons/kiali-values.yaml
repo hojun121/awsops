@@ -5,6 +5,7 @@ auth:
 external_services:
   prometheus:
     url: "http://mimir.observability.svc.cluster.local:8080/prometheus"
+    health_check_url: "http://mimir.observability.svc.cluster.local:8080/ready"
   tracing:
     enabled: false
   grafana:
