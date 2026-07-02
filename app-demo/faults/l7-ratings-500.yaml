@@ -1,9 +1,5 @@
 # L7 장애: ratings에 HTTP 500 fault injection (앱 계층)
-# TCP 연결은 성공하고 애플리케이션이 500을 응답한다.
 # Envoy response_flags = FI (Fault Injected)
-#
-# 주입:  kubectl apply -f l7-ratings-500.yaml
-# 복구:  kubectl delete -f l7-ratings-500.yaml
 apiVersion: networking.istio.io/v1
 kind: VirtualService
 metadata:
