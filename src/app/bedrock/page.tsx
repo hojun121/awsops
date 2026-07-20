@@ -228,7 +228,7 @@ export default function BedrockPage() {
             <div className="bg-navy-900 rounded-lg border border-accent-cyan/30 p-4">
               <div className="flex items-center gap-2 mb-3">
                 <span className="w-2 h-2 rounded-full bg-accent-cyan" />
-                <h4 className="text-xs font-mono uppercase text-accent-cyan tracking-wider">AWSops App (Cumulative)</h4>
+                <h4 className="text-xs font-mono uppercase text-accent-cyan tracking-wider">MusinSight App (Cumulative)</h4>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                 <div>
