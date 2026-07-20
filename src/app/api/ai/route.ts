@@ -40,9 +40,10 @@ function getCodeInterpreterName(): string {
 
 // Available Bedrock models / 사용 가능한 Bedrock 모델
 // Seoul region uses global.* prefix for cross-region inference / 서울 리전은 global.* 접두사 사용
+// 모든 라우트에서 Opus 4.8 사용 (키 이름은 프론트엔드 호환성 위해 유지)
 const MODELS: Record<string, string> = {
-  'sonnet-4.6': 'global.anthropic.claude-sonnet-4-6',
-  'opus-4.6': 'global.anthropic.claude-opus-4-6-v1',
+  'sonnet-4.6': 'global.anthropic.claude-opus-4-8',
+  'opus-4.6': 'global.anthropic.claude-opus-4-8',
 };
 
 // AWS SDK clients / AWS SDK 클라이언트
